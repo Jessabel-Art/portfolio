@@ -1,13 +1,20 @@
+// src/components/ui/sonner.tsx
+import React from "react";
+import { Toaster as SonnerToaster, type ToasterProps, toast } from "sonner";
 import { useTheme } from "next-themes";
-import { Toaster as Sonner } from "sonner";
 
-type ToasterProps = React.ComponentProps<typeof Sonner>;
+// Optional: re-export the toast fn so app code can do `sonnerToast(...)`
+export { toast as sonnerToast };
 
-const Toaster = ({ ...props }: ToasterProps) => {
+/**
+ * Named `Sonner` so it never collides with shadcn's `Toaster`.
+ * Import in App.tsx as:  import { Sonner } from "@/components/ui/sonner";
+ */
+export function Sonner(props: ToasterProps) {
   const { theme = "system" } = useTheme();
 
   return (
-    <Sonner
+    <SonnerToaster
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
       toastOptions={{
@@ -24,6 +31,6 @@ const Toaster = ({ ...props }: ToasterProps) => {
       {...props}
     />
   );
-};
+}
 
-export { Toaster };
+export default Sonner;
