@@ -5,12 +5,12 @@ import { ContactShadows, Environment, Float, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
-// For project pages (username.github.io/portfolio/), BASE_URL resolves to "/portfolio/"
-// Ensure vite.config.ts has: export default defineConfig({ base: '/portfolio/' })
-const DOLPHIN_URL = `${import.meta.env.BASE_URL}models/dolphin-duo.glb`;
+// Import model via Vite’s asset loader — no public path headaches
+// Put your model at: src/assets/models/dolphin-duo.glb
+import modelUrl from "@/assets/models/dolphin-duo.glb?url";
 
 function DolphinModel() {
-  const { scene } = useGLTF(DOLPHIN_URL);
+  const { scene } = useGLTF(modelUrl);
   const group = useRef<THREE.Group>(null);
 
   // Clone to avoid mutating the cached glTF scene across mounts
@@ -41,6 +41,7 @@ export function HeroScene() {
         aria-hidden
         className="pointer-events-none absolute inset-x-10 bottom-3 h-16 rounded-full bg-black/20 blur-[48px] opacity-30 mix-blend-multiply sm:inset-x-12 lg:inset-x-14 lg:h-20"
       />
+
       {/* aspect box ensures the Canvas has layout; parent is relative so three can compute scroll offset */}
       <div className="relative aspect-[4/3]">
         <Canvas
@@ -71,8 +72,10 @@ export function HeroScene() {
             blur={3.2}
             far={4.6}
           />
-          <ErrorBoundary fallback={null /* or a small skeleton */}>
-            <Canvas>{/* lights, model, etc. */}</Canvas>
+
+          <ErrorBoundary fallback={null}>
+            {/* Reserved for future error-prone 3D children */}
+            <></>
           </ErrorBoundary>
         </Canvas>
       </div>
@@ -81,4 +84,4 @@ export function HeroScene() {
 }
 
 // Preload the model once
-useGLTF.preload(DOLPHIN_URL);
+useGLTF.preload(modelUrl);

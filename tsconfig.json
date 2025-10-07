@@ -1,45 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": true,
+    "moduleResolution": "Bundler",
     "jsx": "react-jsx",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-
-    /* Linting */
-    "strict": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitAny": false,
-    "noFallthroughCasesInSwitch": false,
-    "strictNullChecks": false,
-
-    /* Path mapping */
+    "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./client/*"],
-      "@shared/*": ["./shared/*"],
-      "@components/*": ["./client/components/*"],   // ✅ added alias for components
-      "@ui/*": ["./client/components/ui/*"]          // ✅ optional shorthand alias
-    }
+      "@/*": ["client/*"]
+    },
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "types": ["vite/client"]
   },
-  "include": [
-    "client/**/*",
-    "server/**/*",
-    "shared/**/*",
-    "vite.config.ts",
-    "vite.config.server.ts"
-  ],
-  "exclude": ["node_modules", "dist"]
+  "include": ["client", "vite.config.ts"]
 }
