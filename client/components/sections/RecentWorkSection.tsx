@@ -29,7 +29,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.6, ease: ([0.25, 0.1, 0.25, 1] as any) },
   },
 };
 
@@ -38,7 +38,7 @@ export const RecentWorkSection = () => {
   const featuredMedia = useParallax<HTMLDivElement>([-22, 22]);
 
   return (
-    <SectionContainer id="work" watermark="WORK">
+  <SectionContainer id="work">
       {/* Intro */}
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6 text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.45em] text-foreground/60">

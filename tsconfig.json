@@ -13,7 +13,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "skipLibCheck": true,
     "types": ["vite/client"]
   },
-  "include": ["client", "vite.config.ts"]
+  "include": ["client", "vite.config.ts", "types"]
 }

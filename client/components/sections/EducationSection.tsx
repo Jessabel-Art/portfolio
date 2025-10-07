@@ -41,7 +41,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.55,
-      ease: [0.25, 0.1, 0.25, 1],
+        ease: ([0.25, 0.1, 0.25, 1] as any),
       delay: index * 0.08,
     },
   }),
@@ -51,7 +51,7 @@ export const EducationSection = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <SectionContainer id="education" watermark="EDUCATION">
+    <SectionContainer id="education">
       <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.45em] text-foreground/60">
           Education

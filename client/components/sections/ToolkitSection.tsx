@@ -28,7 +28,7 @@ const cardVariants: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.6, ease: ([0.25, 0.1, 0.25, 1] as any) },
   },
 };
 
@@ -47,7 +47,7 @@ export const ToolkitSection = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <SectionContainer id="toolkit" watermark="TOOLKIT">
+    <SectionContainer id="toolkit">
       <motion.div
         className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center"
         initial={prefersReducedMotion ? "visible" : "hidden"}

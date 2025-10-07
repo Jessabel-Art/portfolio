@@ -3,9 +3,10 @@ import { cn } from "@/lib/utils";
 
 type HeroWatermarkProps = {
   className?: string;
+  text?: string;
 };
 
-export const SectionWatermark = ({ className }: HeroWatermarkProps) => {
+export const SectionWatermark = ({ className, text = "Jessabel" }: HeroWatermarkProps) => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -23,7 +24,7 @@ export const SectionWatermark = ({ className }: HeroWatermarkProps) => {
         className
       )}
     >
-      Jessabel
+      {text}
     </motion.span>
   );
 };

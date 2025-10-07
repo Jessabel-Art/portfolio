@@ -45,7 +45,7 @@ const itemVariants = {
     transition: {
       delay: i * 0.08,
       duration: 0.55,
-      ease: [0.25, 0.1, 0.25, 1],
+      ease: ([0.25, 0.1, 0.25, 1] as any),
     },
   }),
 };
@@ -54,7 +54,7 @@ export const CareerSection = () => {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <SectionContainer id="career" watermark="CAREER">
+    <SectionContainer id="career">
       {/* ---------- Intro ---------- */}
       <motion.div
         className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center"

@@ -21,8 +21,8 @@ export const useSectionObserver = (
 
     const elements = sectionIds
       .map((id) => ({ id, element: document.getElementById(id) }))
-      .filter((entry): entry is { id: string; element: Element } =>
-        Boolean(entry.element),
+      .filter((entry): entry is { id: string; element: HTMLElement } =>
+        Boolean(entry.element && entry.element instanceof HTMLElement),
       );
 
     if (elements.length === 0) {
@@ -54,7 +54,9 @@ export const useSectionObserver = (
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
 
-    elements.forEach((entry) => observer.observe(entry.element));
+    elements.forEach((entry) => {
+      if (entry.element) observer.observe(entry.element);
+    });
 
     return () => {
       observer.disconnect();

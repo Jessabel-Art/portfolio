@@ -6,7 +6,6 @@ const TITLES = [
   "UX Designer",
   "Digital Builder",
   "Interactive Storyteller",
-  "Visual Engineer",
 ];
 
 export const Header = () => {
@@ -40,22 +39,30 @@ export const Header = () => {
 
         {/* header content */}
         <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5 sm:px-8">
-          <Link
-            to="/"
-            className="flex items-center gap-2 text-lg font-semibold uppercase tracking-[0.3em] text-foreground/70 transition hover:text-foreground"
-          >
-            JS
-          </Link>
-
-          {/* animated title pill */}
-          <div className="relative flex items-center justify-center rounded-full border border-foreground/10 bg-white/40 px-5 py-2 text-sm font-medium text-foreground/80 backdrop-blur-sm overflow-hidden w-[200px] sm:w-[220px]">
-            <span
-              key={titleIndex}
-              className="absolute inset-0 flex items-center justify-center animate-fadeIn text-center"
+          <div className="flex items-center gap-3">
+            {/* rotating roles pill (decorative) */}
+            <div
+              aria-hidden
+              className="relative flex items-center justify-center rounded-full border border-foreground/10 bg-white/40 px-5 py-2 text-sm font-medium text-foreground/80 backdrop-blur-sm overflow-hidden w-[200px] sm:w-[220px]"
             >
-              {TITLES[titleIndex]}
-            </span>
+              <span
+                key={titleIndex}
+                className="absolute inset-0 flex items-center justify-center animate-fadeIn text-center"
+              >
+                {TITLES[titleIndex]}
+              </span>
+            </div>
+
+            <Link
+              to="/"
+              className="flex items-center gap-2 text-lg font-semibold uppercase tracking-[0.3em] text-foreground/70 transition hover:text-foreground"
+            >
+              JS
+            </Link>
           </div>
+
+          {/* right area intentionally empty (previous pill removed) */}
+          <div />
         </div>
       </div>
     </header>

@@ -1,103 +1,98 @@
-import type { LucideIcon } from "lucide-react";
-import { ArrowUpRight, Layers, Palette, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
-
 import { HeroScene } from "@/components/hero/HeroScene";
-import { SectionWatermark } from "@/components/sections/SectionWatermark";
-
-const badges: { icon: LucideIcon; label: string; value: string }[] = [
-  { icon: Sparkles, label: "Years of Experience", value: "8+" },
-  { icon: Layers, label: "Core Skills", value: "UX Strategy, Spatial UI, Creative Coding" },
-  { icon: Palette, label: "Favorite Tools", value: "Figma, Cinema 4D, WebGL" },
-];
+import { SectionContainer } from "@/components/sections/SectionContainer";
 
 export const HeroSection = () => {
+  const scrollToContact = () =>
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+
   return (
-    <section
-      id="hero"
-      className="relative w-full overflow-hidden pb-16 pt-10 sm:pb-24 lg:pb-28 lg:pt-16"
-      aria-labelledby="hero-heading"
-    >
-      {/* Softer watermark so it doesn’t dominate */}
-        <SectionWatermark className="text-foreground/5 top-[45%]" />
+    // Watermark only in Hero
+    <SectionContainer id="hero" watermark="Jessabel">
+      {/* Pull the whole hero up a bit to remove extra top padding */}
+      <div className="-mt-16 sm:-mt-20 relative mx-auto w-full max-w-[1400px] px-6">
+        <div className="relative mx-auto flex w-full flex-col items-center">
+          <div className="relative mx-auto w-full max-w-[1200px]">
+            <h1 className="sr-only">Jessabel Santos</h1>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6">
-        {/* Simple, reliable 12-col grid */}
-        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-20">
-          {/* LEFT: name, subtitle, copy, CTAs, badges */}
-          <div className="order-2 text-center lg:order-1 lg:col-span-6 lg:text-left">
-            <h1 id="hero-heading" className="sr-only">Jessabel Santos</h1>
-
-            <div className="flex flex-col items-center lg:items-start">
-              <span
-                aria-hidden
-                className="font-serif text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl xl:text-[4.5rem] leading-[0.9]"
-              >
-                Jessy
-              </span>
-              <p className="mt-2 text-xs sm:text-sm font-medium uppercase tracking-[0.35em] text-foreground/60">
-                Portfolio 2025
-              </p>
-            </div>
-
-            <div className="mt-6 space-y-6">
-              <p className="text-lg font-medium text-foreground/80 sm:text-xl">
-                UX Designer • Digital Builder • Interactive Storyteller
-              </p>
-              <p className="text-base leading-relaxed text-foreground/70 sm:text-lg">
-                Crafting immersive digital experiences that feel tactile, intuitive, and alive.
-                Blending human-centered systems with expressive visuals to tell meaningful,
-                measurable stories.
-              </p>
-            </div>
-
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:justify-start">
-              <Link
-                to="/portfolio"
-                className="group inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 text-sm font-medium uppercase tracking-[0.2em] text-background transition hover:bg-foreground/90"
-              >
-                View Selected Work
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-white/70 px-7 py-3 text-sm font-medium text-foreground/80 backdrop-blur-sm transition hover:border-foreground/40 hover:text-foreground"
-              >
-                Schedule a collaboration call
-              </Link>
-            </div>
-
-            <div className="mt-8 grid gap-5 rounded-3xl border border-foreground/10 bg-white/60 p-6 text-left backdrop-blur-md sm:grid-cols-3">
-              {badges.map((badge) => (
-                <div key={badge.label} className="flex flex-col gap-3">
-                  <div className="flex items-center gap-2">
-                    <badge.icon className="h-4 w-4 text-primary" />
-                    <span className="text-[10px] uppercase tracking-[0.25em] text-foreground/50">
-                      {badge.label}
-                    </span>
-                  </div>
-                  <p className="text-sm font-medium text-foreground/80">{badge.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT: dolphins + “Santos” label */}
-          <div className="order-1 relative lg:order-2 lg:col-span-6">
-            {/* NOTE: remove any white card from HeroScene (we’ll edit next) */}
-            <HeroScene />
-
-            {/* Lower-right editorial label overlapping the dolphins */}
+            {/* Bold decorative names (behind the dolphin) */}
             <span
               aria-hidden
-              className="pointer-events-none absolute -bottom-4 right-0 rounded-full bg-white/40 px-5 py-2 font-serif text-3xl font-semibold uppercase tracking-[0.35em] text-foreground/90 shadow-[0_30px_60px_-40px_rgba(12,20,38,0.6)] lg:-bottom-3 lg:text-4xl xl:-bottom-5 xl:text-5xl"
+              className="
+                pointer-events-none absolute left-[4%] top-[2%] z-10 select-none
+                font-serif font-extrabold leading-none text-foreground
+                text-[14vw] sm:text-[12vw] lg:text-[10vw]
+                drop-shadow-[0_2px_6px_rgba(0,0,0,0.18)]
+              "
+            >
+              Jessy
+            </span>
+
+            <span
+              aria-hidden
+              className="
+                pointer-events-none absolute right-[6%] bottom-[16%] z-10 select-none
+                font-serif font-extrabold leading-none text-foreground
+                text-[14vw] sm:text-[12vw] lg:text-[10vw]
+                drop-shadow-[0_2px_6px_rgba(0,0,0,0.18)]
+              "
             >
               Santos
             </span>
+
+            {/* Spotlight behind scene */}
+            <div
+              aria-hidden
+              className="absolute inset-0 z-0 mx-auto h-[66%] w-[78%] -translate-y-4 rounded-[999px] blur-3xl opacity-55"
+              style={{
+                background:
+                  "radial-gradient(ellipse at 50% 45%, rgba(255,214,182,0.6) 0%, rgba(255,214,182,0.18) 52%, transparent 72%)",
+              }}
+            />
+
+            {/* Add vertical padding to give extra gap between names and dolphins */}
+            <div className="relative z-20 py-6 sm:py-8">
+              <HeroScene />
+            </div>
+          </div>
+
+          {/* Recruiter-first summary + supporting line + CTA */}
+          <div className="mt-6 max-w-3xl text-center">
+            {/* One-sentence headline recruiters see first */}
+            <p className="text-2xl font-semibold text-foreground sm:text-[1.75rem] sm:leading-snug">
+              Designer with a Business Ops and Strategy background turning strategy into simple, high-adoption product experiences.
+            </p>
+
+            {/* Supporting subtext */}
+            <p className="mt-3 text-lg text-foreground/70 sm:text-xl">
+              Research, service design, and front-end craft—reducing friction and increasing measurable outcomes.
+            </p>
+
+            <div className="mt-8">
+              <button
+                onClick={scrollToContact}
+                className="
+                  group relative inline-flex items-center justify-center rounded-full
+                  bg-foreground px-10 py-3.5 text-sm font-semibold uppercase tracking-[0.2em]
+                  text-background transition-transform duration-200
+                  hover:-translate-y-0.5 focus-visible:outline-none
+                  focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2
+                  shadow-[0_12px_34px_rgba(18,28,42,0.24)]
+                "
+              >
+                <span className="relative z-10">Contact</span>
+                <span
+                  aria-hidden
+                  className="
+                    pointer-events-none absolute inset-0 rounded-full
+                    bg-gradient-to-b from-white/14 to-transparent
+                    opacity-0 transition-opacity duration-200 group-hover:opacity-100
+                  "
+                />
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </SectionContainer>
   );
 };
-
